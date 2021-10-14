@@ -9,6 +9,9 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
 
 class SignUp : AppCompatActivity() {
 
@@ -18,12 +21,15 @@ class SignUp : AppCompatActivity() {
     private lateinit var btnSignUp: Button
 
     private lateinit var mAuth: FirebaseAuth
+    private lateinit var mDbRef: DatabaseReference
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
         mAuth = FirebaseAuth.getInstance()
+        mDbRef = FirebaseDatabase.getInstance().reference
 
         edtName = findViewById(R.id.edt_name)
         edtEmail = findViewById(R.id.edt_email)
@@ -64,5 +70,6 @@ class SignUp : AppCompatActivity() {
     }
 
     private fun addUserToDatabase(name: String, email: String, uid: String) {
+        mDbRef.child("users").child(uid).setValue(User(name, email, uid))
     }
 }
