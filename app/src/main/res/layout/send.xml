@@ -4,7 +4,7 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/txt_sent_message"
+        android:id="@+id/txt_send_message"
         android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
@@ -12,6 +12,6 @@
         android:layout_alignParentRight="true"
         android:background="@drawable/btn_background"
         android:padding="10dp"
-        android:text="This is sent message"
+        android:text="This is send message"
         android:textSize="18sp" />
 </RelativeLayout>
